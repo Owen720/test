@@ -101,6 +101,8 @@ def main():
 
     JobAo = []
     AppNo = []
+    list1 = []
+    id = 20236433
     app_key = 2023
     hash_key = 6433
     
@@ -115,7 +117,17 @@ def main():
         AppNo.append(app)
 
     TotalJobNo = sum(JobAo)
+    r_hash = reverse(hash_key)
+    r_app = reverse(app_key)
     HashTotal = hashtotal(TotalJobNo, hash_key)
     NewAppNo = ckdt(AppNo, app_key)
+    
+    list1.append(JobAo)
+    list1.append(AppNo)
+    list1.append(NewAppNo)
+
+    print("\nOperator:  			", id, "		Keys (HNK) : ", r_hash, "		(ANK) : ", r_app)
+    print("Hash total of the data: 	", HashTotal, "			Number of data entered : ", NoOfdata)
+    print(list1)
 
 main()
