@@ -50,7 +50,10 @@ def digit(App, last):
 
 
 
+# The function is use to check digit 
 def ckdt(AppNo, app_key):
+
+    list2 = []
     re_key = reverse(app_key)
 
     rev = -1 if app_key < 0 else 1
@@ -98,8 +101,9 @@ def ckdt(AppNo, app_key):
         tot = lastStr + AppStr
         totInt = int(tot)
 
-        return totInt
+        list2.append(totInt)
 
+        return list2
 
 def main():
 
