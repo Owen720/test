@@ -1,1 +1,121 @@
 
+
+
+def reverse(key):
+    rev = -1 if key < 0 else 1
+    key *= rev
+
+    while key:
+        if key % 10 == 0:
+            key /= 10
+        else:
+            break
+
+    key = str(key)
+    a = list(key)
+    a.reverse()
+    key = "".join(a)
+    key = int(key)
+    return rev * key
+
+def hashtotal(TotalJobNo, hash_key):
+    re_key = reverse(hash_key)
+    return TotalJobNo + hash_key + re_key
+
+def digit(App, last):
+    rev = -1 if last < 0 else 1
+    last *= rev
+
+    while last:
+        if last % 10 == 0:
+            last /= 10
+        else:
+            break
+
+    last = str(last)
+    a = list(last)
+
+    App *= rev
+
+    rev = -1 if last < 0 else 1
+    while App:
+        if App % 10 == 0:
+            App /= 10
+        else:
+            break
+
+    App = str(App)
+    a = list(App)
+    
+
+
+
+def ckdt(AppNo, app_key):
+    re_key = reverse(app_key)
+
+    #2023
+    rev = -1 if app_key < 0 else 1
+    app_key *= rev
+
+    while app_key:
+        if app_key % 10 == 0:
+            app_key /= 10
+        else:
+            break
+
+    app_key = str(app_key)
+    a = list(app_key)
+        
+    #AppNo
+    for i in range(len(AppNo)):
+        rev = -1 if AppNo[i] < 0 else 1
+        AppNo[i] *= rev
+
+        while AppNo[i]:
+            if AppNo[i] % 10 == 0:
+                AppNo[i] /= 10
+            else:
+                break
+
+        AppNo[i] = str(AppNo[i])
+        b = list(AppNo[i])
+        
+        a0 = int(a[0])
+        a1 = int(a[1])
+        a2 = int(a[2])
+        a3 = int(a[3])
+
+        b0 = int(b[0])
+        b1 = int(b[1])
+        b2 = int(b[2])
+        b3 = int(b[3])
+
+        App = a0 * b0 + a1 * b1 + a2 * b2 + a3 * b3 + re_key
+        
+        last = 7 - App % 7
+
+        NewAppNo = digit(App, last)
+
+
+def main():
+
+    JobAo = []
+    AppNo = []
+    app_key = 2023
+    hash_key = 6433
+    
+
+    NoOfdata = int(input("\nEnter the number of data pair will enter (Maximum is 5): "))
+
+    for i in range(NoOfdata):
+        job = int(input("Enter the Job Number: "))
+        app = int(input("Enter the App Number: "))
+
+        JobAo.append(job)
+        AppNo.append(app)
+
+    TotalJobNo = sum(JobAo)
+    HashTotal = hashtotal(TotalJobNo, hash_key)
+    NewAppNo = ckdt(AppNo, app_key)
+
+main()
