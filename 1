@@ -53,7 +53,6 @@ def digit(App, last):
 def ckdt(AppNo, app_key):
     re_key = reverse(app_key)
 
-    #2023
     rev = -1 if app_key < 0 else 1
     app_key *= rev
 
@@ -66,7 +65,6 @@ def ckdt(AppNo, app_key):
     app_key = str(app_key)
     a = list(app_key)
         
-    #AppNo
     for i in range(len(AppNo)):
         rev = -1 if AppNo[i] < 0 else 1
         AppNo[i] *= rev
@@ -92,9 +90,15 @@ def ckdt(AppNo, app_key):
 
         App = a0 * b0 + a1 * b1 + a2 * b2 + a3 * b3 + re_key
         
+        # The function is use to find the last digit divisible by 7
         last = 7 - App % 7
 
-        NewAppNo = digit(App, last)
+        lastStr = str(last)
+        AppStr = str(App)
+        tot = lastStr + AppStr
+        totInt = int(tot)
+
+        return totInt
 
 
 def main():
